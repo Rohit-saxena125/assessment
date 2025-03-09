@@ -2,8 +2,10 @@ const { v4: uuid } = require('uuid');
 const router = require('express').Router();
 const authRoute = require('./auth/authRoute');
 const uploadRoute = require('./upload/uploadRoute');
+const videoRoute = require('./video/videoRoute');
 router.use('/upload', uploadRoute);
 router.use('/auth', authRoute);
+router.use('/video', videoRoute);
 router.use((req, res, next) => {
   req.identifier = uuid();
   console.log(
