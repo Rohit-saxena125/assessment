@@ -11,7 +11,7 @@ exports.getAllUsers = async (req, res) => {
         const users = await User.find();
         const data = await Promise.all(
             users.map(async (user) => {
-                const videos = await Video.find({ user: user._id }).skip(0).limit(5);
+                const videos = await Video.find({ user: user._id }).skip(0).limit(5).sort({_id: -1});
                 return { ...user._doc, videos };
             })
         );
