@@ -1,10 +1,10 @@
-const User = require('../models/user/userModel');
-const Video = require('../models/video/videoModel');
+const User = require('../../models/user/userModel');
+const Video = require('../../models/video/videoModel');
 const {
   badRequestErrorResponse,
   internalServerErrorResponse,
   successResponse,
-} = require('../utils/customResponse');
+} = require('../../utils/customResponse');
 
 exports.getAllUsers = async (req, res) => {
     try {
