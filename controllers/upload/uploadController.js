@@ -8,7 +8,7 @@ const User = require("../../models/user/userModel");
 
 exports.uploadVideo = async (req, res) => {
   try {
-    const { title, description, thumbnail } = req.body;
+    const { title, description } = req.body;
     const videoUrl = req.file.location;
     const user = await User.findById(req.user._id);
     if (!user) {
@@ -17,7 +17,6 @@ exports.uploadVideo = async (req, res) => {
     const newVideo = new video({
       title,
       description,
-      thumbnail,
       videoUrl,
       user: req.user._id,
     });
