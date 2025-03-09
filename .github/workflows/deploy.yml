@@ -55,8 +55,8 @@ jobs:
             if [ -d "assessment" ]; then
               echo "Repository exists. Pulling latest changes..."
               cd assessment
-              git reset --hard  # Reset any local changes
-              git pull origin master
+              git fetch origin
+              git reset --hard origin/master
             else
               echo "Repository not found. Cloning..."
               git clone git@github.com:Rohit-saxena125/assessment.git
@@ -65,7 +65,7 @@ jobs:
             
             # Update the .env file correctly
             echo "${{ secrets.ENV_VARIABLES }}" | sed 's/\\n/\n/g' > .env
-            docker-compose build --no-cache
+            sudo docker-compose build --no-cache
             # Deploy with Docker Compose
             sudo docker-compose up -d --build
           EOF
